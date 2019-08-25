@@ -1,0 +1,35 @@
+{%  extends 'syllabus.html' %}
+{%  load static %}
+<link rel="stylesheet" href="{% static 'css/syllabusnav.css' %}">
+
+{% block syllabusmain %}
+
+    <h1>    {{ subject }}</h1>
+    <br><br>
+
+    <h2>UNIT 1:</h2>
+    <br>
+    <h5>{{ subject.unit_1 }}</h5>
+    <br>
+
+    <h2>UNIT 2:</h2>
+    <br>
+    <h5>{{ subject.unit_2 }}</h5>
+    <br>
+
+    <h2>UNIT 3:</h2>
+    <br>
+    <h5>{{ subject.unit_3 }}</h5>
+    <br>
+
+    <h2>UNIT 4:</h2>
+    <br>
+    <h5>{{ subject.unit_4 }}</h5>
+    <br>
+
+    <h2>UNIT 5:</h2>
+    <br>
+    <h5>{{ subject.unit_5 }}</h5>
+    <br>
+
+{%  endblock %}

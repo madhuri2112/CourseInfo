@@ -1,0 +1,129 @@
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 400px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background:linear-gradient(120deg,#7f70f5,#0ea0ff);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 120px;
+    padding-left: 30px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding-top: 16px;
+    padding-right: 8px;
+    padding-left: 16px;
+    padding-bottom: 16px;
+    text-decoration: none;
+    font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.sidenav li {
+    list-style: none;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+    height:100%;
+    margin-left: 400px; /* Same as the width of the sidebar */
+    padding-top: 80px;
+    padding-right: 10px;
+    padding-left: 15%;
+    padding-bottom: 0px;
+    background: linear-gradient(145deg,white,whitesmoke);
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-width: 450px) {
+.sidenav {
+  height: 200px; /* Full-height: remove this if you want "auto" height */
+  width: 100%; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 0; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background:linear-gradient(120deg,#7f70f5,#0ea0ff);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 70px;
+    padding-left: 30px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding-top: 2px;
+    padding-right: 2px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    text-decoration: none;
+    font-size: 15px;
+  color: white;
+  display: block;
+}
+.main {
+    height:70%;
+    width:100%;
+    margin-left: 0px; /* Same as the width of the sidebar */
+    padding-top: 200px;
+    padding-right: 10px;
+    padding-left: 0%;
+    padding-bottom: 0px;
+    background: linear-gradient(145deg,white,whitesmoke);
+}
+}
+
+@media screen and (min-width: 451px) and (max-width: 1000px) {
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 250px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background:linear-gradient(120deg,#7f70f5,#0ea0ff);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 120px;
+    padding-left: 30px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding-top: 16px;
+    padding-right: 8px;
+    padding-left: 16px;
+    padding-bottom: 16px;
+    text-decoration: none;
+    font-size: 25px;
+  color: white;
+  display: block;
+}
+
+.sidenav li {
+    list-style: none;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+    height:100%;
+    margin-left: 250px; /* Same as the width of the sidebar */
+    padding-top: 80px;
+    padding-right: 10px;
+    padding-left: 15%;
+    padding-bottom: 0px;
+    background: linear-gradient(145deg,white,whitesmoke);
+}
+}

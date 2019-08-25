@@ -1,0 +1,21 @@
+{%  extends 'reference.html' %}
+{%  load static %}
+<link rel="stylesheet" href="{% static 'css/syllabusnav.css' %}">
+
+{% block referencemain %}
+
+    <h1>    {{ subject }}</h1>
+    <br><br>
+
+    <h2>REFERENCE BOOKS:</h2>
+    <br>
+    <h5>{{ reference.books }}</h5>
+    <br>
+
+    <h2>WEB SOURCES:</h2>
+    <br>
+    <h5>{{ reference.web }}</h5>
+    <br>
+
+
+{%  endblock %}
