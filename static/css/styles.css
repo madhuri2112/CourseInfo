@@ -1,0 +1,20 @@
+#bg-block{
+    background-position:center center;
+    background-image: url("cvr.jpg");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-color: white;
+    font-weight: bolder;
+    -webkit-transition: background-image 2s ease-in-out;
+    transition: background-image 2s ease-in-out;
+    height:100%;
+    width:49%;
+}
+.whitecolor{
+    color: white;
+}
+
+.btngreen{
+    background-color: green;
+    color:white;
+}

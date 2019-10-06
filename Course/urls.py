@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib import admin
 
 urlpatterns = [
     path('admin/', admin.site.urls,name="admin"),
     path('', include('courseinformation.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+
+admin.sites.AdminSite.site_header = 'CourseInfo admin'
+admin.sites.AdminSite.index_title = 'CourseInfo Admin'
+admin.sites.AdminSite.site_title = 'Admin Login'
