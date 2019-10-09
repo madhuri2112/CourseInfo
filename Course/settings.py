@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 STATICFILES_DIRS = [
                     r"/Users/madhuri_reddy/Desktop/CourseSystem/courseInfoSystem/static",
                     r"F:\madhumini\CourseInfo\static",
+                    r"/home/kushaalhulsoor/Documents/django projects/madhumini/CourseInfo/static",
 ]
 
 # Application definition
