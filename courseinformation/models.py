@@ -14,6 +14,8 @@ class Subject(models.Model):
     department=models.CharField("Department",max_length=4,choices=depts)
     year=models.IntegerField("Year",choices=[(i,i) for i in range(1,5)])
     semester=models.IntegerField("Semester",choices=[(1,1),(2,2)])
+    isopenelective=models.BooleanField("Open Elective",default=0)
+    isprofessionalelective=models.BooleanField("Professional Elective",default=0)
     unit_1=models.TextField()
     unit_2=models.TextField()
     unit_3=models.TextField()
@@ -32,9 +34,18 @@ class References(models.Model):
 
 class Student(models.Model):
     user = models.OneToOneField(User,default=1,on_delete='CASCADE')
-    username=models.CharField(max_length=50,default='')
+    username=models.CharField(unique=True,max_length=50,default='')
+    fullname=models.CharField(max_length=50,default='')
+    joiningyear=models.IntegerField("Joining Year",choices=[(i,i) for i in range(2016,2030)],default=2022)
     department = models.CharField("Department", max_length=4, choices=depts)
-    year = models.IntegerField("Year", choices=[(i, i) for i in range(1, 5)])
-    semester = models.IntegerField("Semester", choices=[(1, 1), (2, 2)])
     def __str__(self):
         return self.username
+
+class Elective(models.Model):
+    studentid = models.CharField(unique=True,max_length=50,default='-')
+    oe1 = models.IntegerField(default=0)
+    oe2 = models.IntegerField(default=0)
+    oe3 = models.IntegerField(default=0)
+    pe1 = models.IntegerField(default=0)
+    pe2 = models.IntegerField(default=0)
+    pe3 = models.IntegerField(default=0)

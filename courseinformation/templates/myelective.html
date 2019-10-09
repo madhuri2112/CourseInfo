@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}My Electives{% endblock %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/myelective.css' %}">
+<div class="electiveselection">
+    <form method="post" action="{% url 'checkelective' %}">
+        <label><h2>Select Electives</h2></label>
+        <table border="0">
+            <tr><td>
+                <label>Open Elective 1</label></td><td>
+            <select name="OpenElective1">
+                <option value="0">None</option>
+                {% for oe in openelectives %}
+                    <option value="{{ oe.subjectid }}">{{oe.name}}</option>
+                {% endfor %}
+            </select><br></td></tr>
+
+            <tr><td>
+            <label>Open Elective 2</label></td><td>
+            <select name="OpenElective2">
+                <option value="0">None</option>
+                {% for oe in openelectives %}
+                    <option value="{{ oe.subjectid }}">{{oe.name}}</option>
+                {% endfor %}
+            </select><br></td></tr>
+
+            <tr><td>
+            <label>Open Elective 3</label></td><td>
+            <select name="OpenElective3">
+                <option value="0">None</option>
+                {% for oe in openelectives %}
+                    <option value="{{ oe.subjectid }}">{{oe.name}}</option>
+                {% endfor %}
+            </select><br></td></tr>
+
+            <tr><td>
+            <label>Professional Elective 1</label></td><td>
+            <select name="ProfessionalElective1">
+                <option value="0">None</option>
+                {% for pe in professionalelectives %}
+                    <option value="{{ pe.subjectid }}">{{pe.name}}</option>
+                {% endfor %}
+            </select><br></td></tr>
+
+            <tr><td>
+            <label>Professional Elective 2</label></td><td>
+            <select name="ProfessionalElective2">
+                <option value="0">None</option>
+                {% for pe in professionalelectives %}
+                    <option value="{{ pe.subjectid }}">{{pe.name}}</option>
+                {% endfor %}
+            </select><br></td></tr>
+
+            <tr><td>
+            <label>Professional Elective 3</label></td><td>
+            <select name="ProfessionalElective3">
+                <option value="0">None</option>
+                {% for pe in professionalelectives %}
+                    <option value="{{ pe.subjectid }}">{{pe.name}}</option>
+                {% endfor %}
+            </select><br></td></tr>
+
+            <tr><td colspan="2">
+            <button type="submit">Submit</button>
+            </td></tr>
+        </table>
+    </form>
+</div>
+{% endblock %}

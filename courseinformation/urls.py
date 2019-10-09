@@ -7,4 +7,6 @@ urlpatterns = [
     path(r'reference/', views.reference, name='reference'),
     path(r'syllabus/<int:id>/', views.syllabusdetail, name='syllabusdetail'),
     path(r'reference/<int:id>/', views.referencedetails , name='referencedetail'),
+    path(r'myelective/', views.myelective, name='myelective'),
+    path(r'myelective/checkelective', views.checkelective, name='checkelective'),
 ]

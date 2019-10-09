@@ -1,0 +1,26 @@
+.electiveselection{
+height:60%;
+width:40%;
+margin-left:30%;
+margin-top:5%;
+padding:2%;
+background:linear-gradient(120deg,#7f70f5,#0ea0ff);
+color:white;
+box-shadow:15px 15px 5px grey;
+}
+
+.electiveselection button{
+margin-left:50%;
+}
+
+select{
+width:100%;
+}
+table{
+width:100%;
+font-size:19px;
+}
+td{
+width:50%;
+padding:1%;
+}
