@@ -6,15 +6,10 @@
 <section class="portfolio-block block-intro">
     <div class="container">
         <div class="about-me">
-            <p>WELCOME&nbsp;<strong>{{ user.username }}!</strong></p><a class="btn btn-outline-primary" role="button" href="#">Check Syllabus</a></div>
-    </div>
-</section>
-<section class="portfolio-block photography">
-    <div class="container">
-        <div class="row no-gutters">
-            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"></a></div>
-            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"></a></div>
-            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"></a></div>
+            <p>WELCOME&nbsp;<strong>{{ student.fullname }}({{user.username}})!</strong></p>
+            <a class="btn btn-outline-primary" role="button" href="{% url 'syllabus' %}">Check Syllabus</a>
+            <a class="btn btn-outline-primary" role="button" href="{% url 'reference' %}">Find References</a>
+            <a class="btn btn-outline-primary" role="button" href="{% url 'myelective' %}">Choose Electives</a>
         </div>
     </div>
 </section>

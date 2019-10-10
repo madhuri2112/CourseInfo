@@ -49,3 +49,5 @@ class Elective(models.Model):
     pe1 = models.IntegerField(default=0)
     pe2 = models.IntegerField(default=0)
     pe3 = models.IntegerField(default=0)
+    def __str__(self):
+        return self.studentid

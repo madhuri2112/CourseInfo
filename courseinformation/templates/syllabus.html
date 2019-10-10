@@ -3,11 +3,14 @@
 {%  load static %}
 <link rel="stylesheet" href="{% static 'css/syllabusnav.css' %}">
 
-<div class="sidenav">
+<div class="sidenav1">
+    <h5>Subjects:</h5>
     {% for subject in  subjects %}
-        <li><a href="{% url 'syllabusdetail' id=subject.subjectid%}">{{ subject.name }}</a></li>
-    {% empty %}<li>Sorry, no subjects added yet.</li>
+    <li><a href="{% url 'syllabusdetail' id=subject.subjectid%}"><h6>{{ subject.name }}</h6></a></li>
+    {% empty %}<li><h6>Sorry! No subjects added yet!</h6></li>
     {% endfor %}
+    <h5>Open Electives:</h5>
+    <h5>Professional Electives:</h5>
 </div>
 
 <!-- Page content -->
@@ -16,3 +19,6 @@
     {% endblock %}
 </div>
 {% endblock %}
+<script>
+
+</script>

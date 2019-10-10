@@ -4,13 +4,16 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/myelective.css' %}">
 <div class="electiveselection">
+    {% block success %}
     <form method="post" action="{% url 'checkelective' %}">
+        {% csrf_token %}
         <label><h2>Select Electives</h2></label>
         <table border="0">
             <tr><td>
                 <label>Open Elective 1</label></td><td>
             <select name="OpenElective1">
-                <option value="0">None</option>
+                <option value="{{ myelec.0.oe1 }}">{{ names.0 }}</option>
+                {% ifnotequal names.0 "None" %}<option value="0">None</option>{% endifnotequal %}
                 {% for oe in openelectives %}
                     <option value="{{ oe.subjectid }}">{{oe.name}}</option>
                 {% endfor %}
@@ -19,7 +22,8 @@
             <tr><td>
             <label>Open Elective 2</label></td><td>
             <select name="OpenElective2">
-                <option value="0">None</option>
+                <option value="{{ myelec.0.oe2 }}">{{ names.1 }}</option>
+                {% ifnotequal names.1 "None" %}<option value="0">None</option>{% endifnotequal %}
                 {% for oe in openelectives %}
                     <option value="{{ oe.subjectid }}">{{oe.name}}</option>
                 {% endfor %}
@@ -28,7 +32,8 @@
             <tr><td>
             <label>Open Elective 3</label></td><td>
             <select name="OpenElective3">
-                <option value="0">None</option>
+                <option value="{{ myelec.0.oe3 }}">{{ names.2 }}</option>
+                {% ifnotequal names.2 "None" %}<option value="0">None</option>{% endifnotequal %}
                 {% for oe in openelectives %}
                     <option value="{{ oe.subjectid }}">{{oe.name}}</option>
                 {% endfor %}
@@ -37,7 +42,8 @@
             <tr><td>
             <label>Professional Elective 1</label></td><td>
             <select name="ProfessionalElective1">
-                <option value="0">None</option>
+                <option value="{{ myelec.0.pe1 }}">{{ names.3 }}</option>
+                {% ifnotequal names.3 "None" %}<option value="0">None</option>{% endifnotequal %}
                 {% for pe in professionalelectives %}
                     <option value="{{ pe.subjectid }}">{{pe.name}}</option>
                 {% endfor %}
@@ -46,7 +52,8 @@
             <tr><td>
             <label>Professional Elective 2</label></td><td>
             <select name="ProfessionalElective2">
-                <option value="0">None</option>
+                <option value="{{ myelec.0.pe2 }}">{{ names.4 }}</option>
+                {% ifnotequal names.4 "None" %}<option value="0">None</option>{% endifnotequal %}
                 {% for pe in professionalelectives %}
                     <option value="{{ pe.subjectid }}">{{pe.name}}</option>
                 {% endfor %}
@@ -55,7 +62,8 @@
             <tr><td>
             <label>Professional Elective 3</label></td><td>
             <select name="ProfessionalElective3">
-                <option value="0">None</option>
+                <option value="{{ myelec.0.pe3 }}">{{ names.5 }}</option>
+                {% ifnotequal names.5 "None" %}<option value="0">None</option>{% endifnotequal %}
                 {% for pe in professionalelectives %}
                     <option value="{{ pe.subjectid }}">{{pe.name}}</option>
                 {% endfor %}
@@ -66,5 +74,6 @@
             </td></tr>
         </table>
     </form>
+{% endblock %}
 </div>
 {% endblock %}
