@@ -2,6 +2,7 @@ import datetime
 
 from django.shortcuts import render,redirect
 from .models import Student,Subject,References,Elective
+from django.contrib.auth.decorators import login_required
 
 now = datetime.datetime.now()
 getsemester = [2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2]
@@ -9,34 +10,146 @@ getsemester = [2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2]
 def home(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    return render(request,'home.html',{'student':Student.objects.filter(username=request.user.username)[0]})
+    return render(request,'home.html',{'student':Student.objects.get(username=request.user.username)})
 
+@login_required
 def syllabus(request):
-    student=Student.objects.filter(username=request.user.username)[0]
-    studentyear,studentsem = (now.year - student.joiningyear) , getsemester[int(now.strftime("%m"))-1]
-    subjects=Subject.objects.filter(department=student.department,year=studentyear,semester=studentsem)
-    return render(request,'syllabus.html',{'subjects':subjects})
+    student=Student.objects.get(username=request.user.username)
+    studentyear = (now.year - student.joiningyear+1)
+    studentsem = getsemester[int(now.strftime("%m"))-1]
+    subjects=Subject.objects.filter(department=student.department,
+                                    year=studentyear,
+                                    semester=studentsem,
+                                    isopenelective=False,
+                                    isprofessionalelective=False)
+    myelec=Elective.objects.filter(studentid=request.user.username)
+    openelectives , profelectives = []  , []
+    if len(myelec)>0:
+        oe1,oe2,oe3,pe1,pe2,pe3=0,0,0,0,0,0
+        if myelec[0].oe1!=0:
+            oe1 = Subject.objects.get(subjectid=myelec[0].oe1)
+        if myelec[0].oe2 != 0:
+            oe2 = Subject.objects.get(subjectid=myelec[0].oe2)
+        if myelec[0].oe3 != 0:
+            oe3 = Subject.objects.get(subjectid=myelec[0].oe3)
+        if myelec[0].pe1 != 0:
+            pe1 = Subject.objects.get(subjectid=myelec[0].pe1)
+        if myelec[0].pe2 != 0:
+            pe2 = Subject.objects.get(subjectid=myelec[0].pe2)
+        if myelec[0].pe3 != 0:
+            pe3 = Subject.objects.get(subjectid=myelec[0].pe3)
+        openelectives += [oe1, oe2, oe3]
+        profelectives += [pe1, pe2, pe3]
+    return render(request,'syllabus.html',{'subjects':subjects,
+                                           'openelectives':openelectives,
+                                           'profelectives':profelectives})
 
+@login_required
 def reference(request):
-    student=Student.objects.filter(username=request.user.username)[0]
-    studentyear,studentsem = (now.year - student.joiningyear) , getsemester[int(now.strftime("%m"))-1]
-    subjects=Subject.objects.filter(department=student.department,year=studentyear,semester=studentsem)
-    return render(request,'reference.html',{'subjects':subjects})
+    student=Student.objects.get(username=request.user.username)
+    studentyear = (now.year - student.joiningyear+1)
+    studentsem = getsemester[int(now.strftime("%m")) - 1]
+    subjects=Subject.objects.filter(department=student.department,
+                                    year=studentyear,
+                                    semester=studentsem,
+                                    isopenelective=False,
+                                    isprofessionalelective=False)
+    myelec=Elective.objects.filter(studentid=request.user.username)
+    openelectives , profelectives = []  , []
+    if len(myelec)>0:
+        oe1,oe2,oe3,pe1,pe2,pe3=0,0,0,0,0,0
+        if myelec[0].oe1!=0:
+            oe1 = Subject.objects.get(subjectid=myelec[0].oe1)
+        if myelec[0].oe2 != 0:
+            oe2 = Subject.objects.get(subjectid=myelec[0].oe2)
+        if myelec[0].oe3 != 0:
+            oe3 = Subject.objects.get(subjectid=myelec[0].oe3)
+        if myelec[0].pe1 != 0:
+            pe1 = Subject.objects.get(subjectid=myelec[0].pe1)
+        if myelec[0].pe2 != 0:
+            pe2 = Subject.objects.get(subjectid=myelec[0].pe2)
+        if myelec[0].pe3 != 0:
+            pe3 = Subject.objects.get(subjectid=myelec[0].pe3)
+        openelectives += [oe1, oe2, oe3]
+        profelectives += [pe1, pe2, pe3]
+    return render(request,'reference.html',{'subjects':subjects,
+                                           'openelectives':openelectives,
+                                           'profelectives':profelectives})
 
+@login_required
 def syllabusdetail(request,id):
-    student=Student.objects.filter(username=request.user.username)[0]
-    studentyear,studentsem = (now.year - student.joiningyear) , getsemester[int(now.strftime("%m"))-1]
-    subjects=Subject.objects.filter(department=student.department,year=studentyear,semester=studentsem)
-    subject=Subject.objects.filter(subjectid=id)[0]
-    return render(request,'syllabusdetail.html',{'subjects':subjects,'subject':subject})
+    student=Student.objects.get(username=request.user.username)
+    studentyear = (now.year - student.joiningyear+1)
+    studentsem = getsemester[int(now.strftime("%m")) - 1]
+    subjects = Subject.objects.filter(department=student.department,
+                                      year=studentyear,
+                                      semester=studentsem,
+                                      isopenelective=False,
+                                      isprofessionalelective=False)
+    myelec = Elective.objects.filter(studentid=request.user.username)
+    openelectives, profelectives = [], []
+    if len(myelec) > 0:
+        oe1, oe2, oe3, pe1, pe2, pe3 = 0, 0, 0, 0, 0, 0
+        if myelec[0].oe1 != 0:
+            oe1 = Subject.objects.get(subjectid=myelec[0].oe1)
+        if myelec[0].oe2 != 0:
+            oe2 = Subject.objects.get(subjectid=myelec[0].oe2)
+        if myelec[0].oe3 != 0:
+            oe3 = Subject.objects.get(subjectid=myelec[0].oe3)
+        if myelec[0].pe1 != 0:
+            pe1 = Subject.objects.get(subjectid=myelec[0].pe1)
+        if myelec[0].pe2 != 0:
+            pe2 = Subject.objects.get(subjectid=myelec[0].pe2)
+        if myelec[0].pe3 != 0:
+            pe3 = Subject.objects.get(subjectid=myelec[0].pe3)
+        openelectives += [oe1, oe2, oe3]
+        profelectives += [pe1, pe2, pe3]
+    subject=Subject.objects.filter(subjectid=id)
+    if len(subject)==0:
+        subject=0
+    return render(request,'syllabusdetail.html',{'subjects':subjects,
+                                                 'openelectives':openelectives,
+                                                 'profelectives':profelectives,
+                                                 'subject':subject})
 
+@login_required
 def referencedetails(request,id):
-    student=Student.objects.filter(username=request.user.username)[0]
-    studentyear,studentsem = (now.year - student.joiningyear) , getsemester[int(now.strftime("%m"))-1]
-    subjects=Subject.objects.filter(department=student.department,year=studentyear,semester=studentsem)
-    reference=References.objects.filter(subjectid=id)[0]
-    return render(request,'referencedetails.html',{'subjects':subjects,'reference':reference})
-
+    student=Student.objects.get(username=request.user.username)
+    studentyear = (now.year - student.joiningyear+1)
+    studentsem = getsemester[int(now.strftime("%m")) - 1]
+    subjects = Subject.objects.filter(department=student.department,
+                                      year=studentyear,
+                                      semester=studentsem,
+                                      isopenelective=False,
+                                      isprofessionalelective=False)
+    myelec = Elective.objects.filter(studentid=request.user.username)
+    openelectives, profelectives = [], []
+    if len(myelec) > 0:
+        oe1, oe2, oe3, pe1, pe2, pe3 = 0, 0, 0, 0, 0, 0
+        if myelec[0].oe1 != 0:
+            oe1 = Subject.objects.get(subjectid=myelec[0].oe1)
+        if myelec[0].oe2 != 0:
+            oe2 = Subject.objects.get(subjectid=myelec[0].oe2)
+        if myelec[0].oe3 != 0:
+            oe3 = Subject.objects.get(subjectid=myelec[0].oe3)
+        if myelec[0].pe1 != 0:
+            pe1 = Subject.objects.get(subjectid=myelec[0].pe1)
+        if myelec[0].pe2 != 0:
+            pe2 = Subject.objects.get(subjectid=myelec[0].pe2)
+        if myelec[0].pe3 != 0:
+            pe3 = Subject.objects.get(subjectid=myelec[0].pe3)
+        openelectives += [oe1, oe2, oe3]
+        profelectives += [pe1, pe2, pe3]
+    reference=References.objects.filter(subjectid=id)
+    if len(reference)==0:
+        reference=0
+    subject = Subject.objects.filter(subjectid=id)
+    return render(request,'referencedetails.html',{'subjects':subjects,
+                                                   'openelectives':openelectives,
+                                                   'profelectives':profelectives,
+                                                   'reference':reference,
+                                                   'subject':subject})
+@login_required
 def myelective(request):
     openelectives=Subject.objects.filter(isopenelective=True)
     professionalelectives = Subject.objects.filter(isprofessionalelective=True)
@@ -59,7 +172,7 @@ def myelective(request):
                                               'professionalelectives': professionalelectives,
                                               'myelec':myelec,
                                               'names':names})
-
+@login_required
 def checkelective(request):
     oe1,oe2,oe3=request.POST.get('OpenElective1'),request.POST.get('OpenElective2'),request.POST.get('OpenElective3')
     pe1,pe2,pe3=request.POST.get('ProfessionalElective1'),request.POST.get('ProfessionalElective2'),request.POST.get('ProfessionalElective3')

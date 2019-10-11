@@ -3,28 +3,32 @@
 <link rel="stylesheet" href="{% static 'css/syllabusnav.css' %}">
 
 {% block syllabusmain %}
-
-    <h3>    {{ subject }}</h3>
+    {% if subject != 0 %}
+    <h3>    {{ subject.0.name }}</h3>
     <br>
-
     <h4>UNIT 1:</h4>
-    <h6>{{ subject.unit_1 }}</h6>
+    <h6>{{ subject.0.unit_1 }}</h6>
     <br>
 
     <h4>UNIT 2:</h4>
-    <h6>{{ subject.unit_2 }}</h6>
+    <h6>{{ subject.0.unit_2 }}</h6>
     <br>
 
     <h4>UNIT 3:</h4>
-    <h6>{{ subject.unit_3 }}</h6>
+    <h6>{{ subject.0.unit_3 }}</h6>
     <br>
 
     <h4>UNIT 4:</h4>
-    <h6>{{ subject.unit_4 }}</h6>
+    <h6>{{ subject.0.unit_4 }}</h6>
     <br>
 
     <h4>UNIT 5:</h4>
-    <h6>{{ subject.unit_5 }}</h6>
+    <h6>{{ subject.0.unit_5 }}</h6>
     <br>
-
+<script>
+    $(".{{ subject.0.id }}").addClass("active");
+</script>
+    {% else %}
+    <h5>Subject details not added yet!</h5>
+    {% endif %}
 {%  endblock %}

@@ -22,24 +22,23 @@ class Subject(models.Model):
     unit_4=models.TextField()
     unit_5=models.TextField()
     def __str__(self):
-        return u"%s" % self.name
+        return self.name+"("+str(self.subjectid)+")"
 
 class References(models.Model):
-    name=models.CharField('Subject name',max_length=100)
-    subjectid=models.IntegerField("Subject ID",unique=True,default=0)
+    subject=models.OneToOneField(Subject,default=1,on_delete=models.CASCADE)
     books=models.TextField(null=True)
     web=models.TextField('Web Sources',null=True)
     def __str__(self):
         return u"%s" % self.name
 
 class Student(models.Model):
-    user = models.OneToOneField(User,default=1,on_delete='CASCADE')
+    user = models.OneToOneField(User,default=1,on_delete=models.CASCADE)
     username=models.CharField(unique=True,max_length=50,default='')
     fullname=models.CharField(max_length=50,default='')
     joiningyear=models.IntegerField("Joining Year",choices=[(i,i) for i in range(2016,2030)],default=2022)
     department = models.CharField("Department", max_length=4, choices=depts)
     def __str__(self):
-        return self.username
+        return self.username+"("+self.fullname+")"
 
 class Elective(models.Model):
     studentid = models.CharField(unique=True,max_length=50,default='-')

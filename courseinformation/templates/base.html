@@ -10,18 +10,47 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="{% static 'css/untitled.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        .active {
+          background-color: green;
+          color: white;
+          box-shadow:2px 5px 5px darkgreen;
+        }
+        /* width */
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 5px grey;
+          border-radius: 0px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: green;
+          border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: darkgreen;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar gradient" style="z-index:10;">
         <div class="container"><a class="navbar-brand logo" href="#">Course Information</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navbarNav">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'syllabus' %}">Syllabus</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'reference' %}">References</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'myelective' %}">Electives</a></li>
+                    <li id="navhome" class="nav-item" role="presentation"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                    <li id="navsyll" class="nav-item" role="presentation"><a class="nav-link" href="{% url 'syllabus' %}">Syllabus</a></li>
+                    <li id="navref" class="nav-item" role="presentation"><a class="nav-link" href="{% url 'reference' %}">References</a></li>
+                    <li id="navelec" class="nav-item" role="presentation"><a class="nav-link" href="{% url 'myelective' %}">MyElectives</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'logout' %}" id="logout">Logout</a></li>
                 </ul>
             </div>
@@ -32,7 +61,6 @@
         {% endblock %}
     </main>
     <footer class="page-footer"></footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
     <script src="{% static 'js/theme.js' %}"></script>
 </body>

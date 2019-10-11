@@ -87,7 +87,7 @@
   display: block;
 }
 .main {
-    height:70%;
+    height:100%;
     width:100%;
     margin-left: 0px; /* Same as the width of the sidebar */
     padding-top: 200px;

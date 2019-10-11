@@ -3,16 +3,33 @@
 {%  load static %}
 <link rel="stylesheet" href="{% static 'css/syllabusnav.css' %}">
 
-<div class="sidenav">
+<div class="sidenav1">
+    <h5>Subjects:</h5>
     {% for subject in  subjects %}
-        <li><a href="{% url 'referencedetail' id=subject.subjectid %}">{{ subject.name }}</a></li>
-    {% empty %}<li>Sorry, no subjects added yet.</li>
+    <li><a class="{{ subject.id }}" href="{% url 'referencedetail' id=subject.subjectid%}"><h6>{{ subject.name }}</h6></a></li>
+    {% empty %}<li><h6>Sorry! No subjects added yet!</h6></li>
+    {% endfor %}
+    <br><br>
+    <h5>Open Electives:</h5>
+        {% for subject in  openelectives %}
+    {% ifnotequal subject 0 %}<li><a class="{{ subject.id }}" href="{% url 'referencedetail' id=subject.subjectid%}"><h6>{{ subject.name }}</h6></a></li>{% endifnotequal %}
+    {% empty %}<li><h6>Sorry! No open electives added yet!</h6></li>
+    {% endfor %}
+    <br><br>
+    <h5>Professional Electives:</h5>
+    {% for subject in  profelectives %}
+    {% ifnotequal subject 0 %}<li><a class="{{ subject.id }}" href="{% url 'referencedetail' id=subject.subjectid%}"><h6>{{ subject.name }}</h6></a></li>{% endifnotequal %}
+    {% empty %}<li><h6>Sorry! No professional electives added yet!</h6></li>
     {% endfor %}
 </div>
 
 <!-- Page content -->
 <div class="main">
   {% block referencemain %}
+    <h1> Select a subject to view references!</h1>
     {% endblock %}
 </div>
+<script>
+    $("#navref").addClass("active");
+</script>
 {% endblock %}

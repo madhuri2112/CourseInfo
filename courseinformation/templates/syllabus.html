@@ -6,19 +6,30 @@
 <div class="sidenav1">
     <h5>Subjects:</h5>
     {% for subject in  subjects %}
-    <li><a href="{% url 'syllabusdetail' id=subject.subjectid%}"><h6>{{ subject.name }}</h6></a></li>
+    <li><a class="{{ subject.id }}" href="{% url 'syllabusdetail' id=subject.subjectid%}"><h6>{{ subject.name }}</h6></a></li>
     {% empty %}<li><h6>Sorry! No subjects added yet!</h6></li>
     {% endfor %}
+    <br><br>
     <h5>Open Electives:</h5>
+        {% for subject in  openelectives %}
+    {% ifnotequal subject 0 %}<li><a class="{{ subject.id }}" href="{% url 'syllabusdetail' id=subject.subjectid%}"><h6>{{ subject.name }}</h6></a></li>{% endifnotequal %}
+    {% empty %}<li><h6>Sorry! No open electives added yet!</h6></li>
+    {% endfor %}
+    <br><br>
     <h5>Professional Electives:</h5>
+    {% for subject in  profelectives %}
+    {% ifnotequal subject 0 %}<li><a class="{{ subject.id }}" href="{% url 'syllabusdetail' id=subject.subjectid%}"><h6>{{ subject.name }}</h6></a></li>{% endifnotequal %}
+    {% empty %}<li><h6>Sorry! No professional electives added yet!</h6></li>
+    {% endfor %}
 </div>
 
 <!-- Page content -->
 <div class="main">
   {% block syllabusmain %}
+    <h1>Select a subject to view syllabus!</h1>
     {% endblock %}
 </div>
-{% endblock %}
 <script>
-
+    $("#navsyll").addClass("active");
 </script>
+{% endblock %}

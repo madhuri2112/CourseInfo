@@ -4,18 +4,20 @@
 
 {% block referencemain %}
 
-    <h1>    {{ subject }}</h1>
+    <h3>    {{ subject.0.name }}</h3>
     <br><br>
 
-    <h2>REFERENCE BOOKS:</h2>
+    <h4>REFERENCE BOOKS:</h4>
     <br>
-    <h5>{{ reference.books }}</h5>
-    <br>
-
-    <h2>WEB SOURCES:</h2>
-    <br>
-    <h5>{{ reference.web }}</h5>
+    {% if reference != 0 %}<h6>{{ reference.books }}</h6>{% else %} <h6> no reference books added for this subject yet ! </h6>{% endif %}
     <br>
 
+    <h4>WEB SOURCES:</h4>
+    <br>
+    <h6>{% if reference != 0 %}{{ reference.web }} {% else %}  No web resources added for this subject yet !{% endif %}</h6>
+    <br>
+<script>
+    $(".{{ subject.0.id }}").addClass("active");
+</script>
 
 {%  endblock %}
