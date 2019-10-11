@@ -22,7 +22,7 @@ class Subject(models.Model):
     unit_4=models.TextField()
     unit_5=models.TextField()
     def __str__(self):
-        return self.name+"("+str(self.subjectid)+")"
+        return self.name+"(id:"+str(self.subjectid)+")"
 
 class References(models.Model):
     subject=models.OneToOneField(Subject,default=1,on_delete=models.CASCADE)

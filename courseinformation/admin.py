@@ -11,11 +11,11 @@ class ReferencesAdmin(admin.ModelAdmin):
 class StudentAdmin(admin.ModelAdmin):
     pass
 
-class ElectiveAdmin(admin.ModelAdmin):
-    pass
+# class ElectiveAdmin(admin.ModelAdmin):
+#     pass
 
 admin.site.register(Subject,SubjectAdmin)
 admin.site.register(References, ReferencesAdmin)
 admin.site.register(Student,StudentAdmin)
-admin.site.register(Elective,ElectiveAdmin)
+# admin.site.register(Elective,ElectiveAdmin)
 admin.site.unregister(Group)
