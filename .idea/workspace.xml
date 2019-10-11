@@ -2,20 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c518b058-cf65-4487-bba3-799353aa330c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/js/homejs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/courseinformation/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseinformation/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseinformation/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/courseinformation/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseinformation/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/courseinformation/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseinformation/templates/myelective.html" beforeDir="false" afterPath="$PROJECT_DIR$/courseinformation/templates/myelective.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseinformation/templates/reference.html" beforeDir="false" afterPath="$PROJECT_DIR$/courseinformation/templates/reference.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/courseinformation/templates/referencedetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/courseinformation/templates/referencedetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseinformation/templates/syllabus.html" beforeDir="false" afterPath="$PROJECT_DIR$/courseinformation/templates/syllabus.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/courseinformation/templates/syllabusdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/courseinformation/templates/syllabusdetail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/courseinformation/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/courseinformation/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/syllabusnav.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/syllabusnav.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/login.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +97,14 @@
       <option name="project" value="LOCAL" />
       <updated>1570709423966</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added styles">
+      <created>1570791366795</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1570791366795</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -133,7 +131,8 @@
     <MESSAGE value="added linux static path" />
     <MESSAGE value="added elective selection feature" />
     <MESSAGE value="added UI for elective selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="added UI for elective selection" />
+    <MESSAGE value="added styles" />
+    <option name="LAST_COMMIT_MESSAGE" value="added styles" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

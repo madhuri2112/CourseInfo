@@ -140,10 +140,10 @@ def referencedetails(request,id):
             pe3 = Subject.objects.get(subjectid=myelec[0].pe3)
         openelectives += [oe1, oe2, oe3]
         profelectives += [pe1, pe2, pe3]
+    subject = Subject.objects.filter(subjectid=id)
     reference=References.objects.filter(subjectid=id)
     if len(reference)==0:
         reference=0
-    subject = Subject.objects.filter(subjectid=id)
     return render(request,'referencedetails.html',{'subjects':subjects,
                                                    'openelectives':openelectives,
                                                    'profelectives':profelectives,

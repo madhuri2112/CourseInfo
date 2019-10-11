@@ -26,10 +26,11 @@ class Subject(models.Model):
 
 class References(models.Model):
     subject=models.OneToOneField(Subject,default=1,on_delete=models.CASCADE)
+    subjectid=models.IntegerField("Subject ID",unique=True,default=0)
     books=models.TextField(null=True)
     web=models.TextField('Web Sources',null=True)
     def __str__(self):
-        return u"%s" % self.name
+        return str(self.subject)
 
 class Student(models.Model):
     user = models.OneToOneField(User,default=1,on_delete=models.CASCADE)
