@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{%  load static %}
+<link rel="stylesheet" href="{% static 'css/syllabusnav.css' %}">
+
+<div class="sidenav1">
+    <h5>Labs:</h5>
+    {% for lab in  labs %}
+    <li><a class="{{ lab.id }}" href="{% url 'labdetail' id=subject.subjectid%}"><h6>{{ lab.name }}</h6></a></li>
+    {% empty %}<li><h6>Sorry! No labs added yet!</h6></li>
+    {% endfor %}
+    <br><br>
+
+</div>
+
+<!-- Page content -->
+<div class="main">
+  {% block referencemain %}
+    <h1> Select a Lab to view Lab description!</h1>
+    {% endblock %}
+</div>
+<script>
+    $("#navref").addClass("active");
+</script>
+{% endblock %}

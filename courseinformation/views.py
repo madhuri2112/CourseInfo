@@ -1,7 +1,7 @@
 import datetime
 
 from django.shortcuts import render,redirect
-from .models import Student,Subject,References,Elective
+from .models import Student,Subject,References,Elective,Lab
 from django.contrib.auth.decorators import login_required
 
 now = datetime.datetime.now()
@@ -43,6 +43,29 @@ def syllabus(request):
     return render(request,'syllabus.html',{'subjects':subjects,
                                            'openelectives':openelectives,
                                            'profelectives':profelectives})
+
+@login_required
+def lab(request):
+    student = Student.objects.get(username=request.user.username)
+    studentyear = (now.year - student.joiningyear + 1)
+    studentsem = getsemester[int(now.strftime("%m")) - 1]
+    labs=Lab.objects.filter(department=student.department,
+                                    year=studentyear,
+                                    semester=studentsem)
+    return render(request,"lab.html",{'labs':labs})
+
+@login_required
+def labdetail(request,id):
+    student = Student.objects.get(username=request.user.username)
+    studentyear = (now.year - student.joiningyear + 1)
+    studentsem = getsemester[int(now.strftime("%m")) - 1]
+    labs=Lab.objects.filter(department=student.department,
+                                    year=studentyear,
+                                    semester=studentsem)
+    lab=Lab.objects.get(labid=id)
+    return render(request,"lab.html",{'labs':labs,
+                                      'lab':lab})
+
 
 @login_required
 def reference(request):

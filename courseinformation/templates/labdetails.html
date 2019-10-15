@@ -1,0 +1,24 @@
+{%  extends 'reference.html' %}
+{%  load static %}
+<link rel="stylesheet" href="{% static 'css/syllabusnav.css' %}">
+
+{% block referencemain %}
+
+    <h3>    {{ lab.0.name }}</h3>
+    <br><br>
+
+    <h4>REFERENCE BOOKS:</h4>
+    <br>
+<h6>{{ lab.0.books }}</h6>
+    {% if reference != 0 %}<h6>{{ reference.books }}</h6>{% else %} <h6> no reference books added for this subject yet ! </h6>{% endif %}
+    <br>
+
+    <h4>WEB SOURCES:</h4>
+    <br>
+    <h6>{% if reference != 0 %}{{ reference.0.web }} {% else %}  No web resources added for this subject yet !{% endif %}</h6>
+    <br>
+<script>
+    $(".{{ subject.0.id }}").addClass("active");
+</script>
+
+{%  endblock %}

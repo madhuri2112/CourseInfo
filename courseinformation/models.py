@@ -32,6 +32,16 @@ class References(models.Model):
     def __str__(self):
         return str(self.subject)
 
+class Lab(models.Model):
+    name = models.CharField("Lab Name", max_length=100)
+    labid = models.IntegerField("Lab ID", unique=True, default=0)
+    department = models.CharField("Department", max_length=4, choices=depts)
+    year = models.IntegerField("Year", choices=[(i, i) for i in range(1, 5)])
+    semester = models.IntegerField("Semester", choices=[(1, 1), (2, 2)])
+    description = models.TextField()
+    def __str__(self):
+        return str(self.name)
+
 class Student(models.Model):
     user = models.OneToOneField(User,default=1,on_delete=models.CASCADE)
     username=models.CharField(unique=True,max_length=50,default='')
