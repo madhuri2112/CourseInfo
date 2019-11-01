@@ -25,4 +25,4 @@ urlpatterns = [
 
 admin.sites.AdminSite.site_header = 'CourseInfo admin'
 admin.sites.AdminSite.index_title = 'CourseInfo Admin'
-admin.sites.AdminSite.site_title = 'Admin Login'
+admin.sites.AdminSite.site_title = 'Admin L'
