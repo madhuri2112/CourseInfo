@@ -33,6 +33,7 @@ STATICFILES_DIRS = [
                     r"F:\madhumini\CourseInfo\static",
                     r"/home/kushaalhulsoor/Documents/django projects/madhumini/CourseInfo/static",
                     r"/Users/madhuri_reddy/Documents/CourseInfo/static",
+    r"C:\Users\HARSHITHA BEHERA\Documents\CourseInfo\static",
 ]
 
 # Application definition
